@@ -19,7 +19,7 @@ module.exports = {
         paths: PATHS //Ярлык для PATHS
     },
     entry: {
-        app: PATHS.src
+        app: `${PATHS.src}/client.js`
     },
     output: {
         filename: `${PATHS.assets}js/[name].[chunkhash].js`,
