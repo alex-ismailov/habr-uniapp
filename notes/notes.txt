@@ -1,0 +1,5 @@
+https://habr.com/ru/post/309958/
+
+yarn add @babel/core babel-plugin-transform-decorators-legacy @babel/polyfill @babel/preset-es2015 @babel/preset-react @babel/preset-stage-0
+
+Эти зависимости надо устанавливать как зависимости проекта, так как серверной части приложения тоже нужен babel.
