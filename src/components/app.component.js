@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import s from "./app.component.css";
+import React, { Component } from 'react';
+
 class MyComponent extends Component {
   render() {
     // return <div className={s.intro}>Hello to you from REACTttt MyComponent</div>;

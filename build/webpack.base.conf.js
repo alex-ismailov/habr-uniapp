@@ -3,6 +3,7 @@ const fs = require('fs')
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const json = require('./file.json');
 
 const PATHS = {
     src: path.join(__dirname, '../src'),
@@ -24,7 +25,7 @@ module.exports = {
     output: {
         filename: `${PATHS.assets}js/[name].[chunkhash].js`,
         path: PATHS.dist,
-        publicPath: '/' // Необходимо для dev-server, публичный.
+        publicPath: '/' // Необходимо для dev-server, публичный. это уже из хабра http://localhost:8050/public/assets'
     },
     optimization: {
         splitChunks: {
@@ -39,10 +40,19 @@ module.exports = {
         }
     },
     module: {
-        rules: [{
-                test: /\.js$/,
-                loader: 'babel-loader', // Указываем через что необхожимо обрабатывать js файлы
-                exclude: '/node_modules/'
+        rules: [
+            {
+                // test: /\.jsx$/,
+                // loader: 'babel-loader!eslint-loader',
+                // exclude: [/node_modules/, `${PATHS.dist}/${PATHS.assets}js/`],
+                // options: {
+                //     configFile: '.eslintrc'
+                // }
+            }, {
+                test: /\.(js|jsx)$/,
+                // loader: 'babel-loader', // Указываем через что необхожимо обрабатывать js файлы
+                exclude: [/node_modules/, `${PATHS.dist}/${PATHS.assets}js/`],
+                use: ['babel-loader', 'eslint-loader']
             }, {
                 test: /\.scss$/,
                 use: [
@@ -67,10 +77,13 @@ module.exports = {
                 }
             }, {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file-loader',
+                loader: 'file-loader', // из хабра loader: 'url-loader?limit=1'
                 options: {
                     name: '[name].[ext]'
                 }
+            }, {
+                test: /\.json$/,
+                loader: 'json-loader'
             }
 
         ]
