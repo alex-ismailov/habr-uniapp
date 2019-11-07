@@ -28,7 +28,7 @@
     },
     "rules": {
         "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-        "no-console": 0,
+        "max-len": ["error", 150, { "ignoreUrls": true }],
         "comma-dangle": [2, "always-multiline"],
         "no-unused-vars": "error",
         "react/require-default-props": 0,

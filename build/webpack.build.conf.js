@@ -10,6 +10,6 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
 });
 
 // export buildWebpackConfig
-module.exports = new Promise((resolve, reject) => {
+module.exports = new Promise((resolve) => {
   resolve(buildWebpackConfig);
 });

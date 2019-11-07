@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.conf');
 
 const devWebpackConf = merge(baseWebpackConfig, {
@@ -23,6 +22,6 @@ const devWebpackConf = merge(baseWebpackConfig, {
 });
 
 // export devWebpackConfig
-module.exports = new Promise((resolve, reject) => {
+module.exports = new Promise((resolve) => {
   resolve(devWebpackConf);
 });
