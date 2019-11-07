@@ -5,6 +5,15 @@
         "eslint:recommended",
         "plugin:react/recommended"
     ],
+    "plugins": [
+        "react"
+    ],
+    "env": {
+        "browser": true,
+        "node": true,
+        "mocha": true,
+        "es6": true
+    },
     "parserOptions": {
         "ecmaVersion": 9,
         "sourceType": "module",
@@ -27,7 +36,8 @@
         "react/jsx-indent": ["warn", 4],
         "react/jsx-indent-props": ["warn", 4],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx",".ts", ".tsx"] }],
-        "jsx-a11y/anchor-is-valid": 0
+        "jsx-a11y/anchor-is-valid": 0,
+        "linebreak-style": [2, "windows"]
     },
     "settings": {
         "import/resolver": {
