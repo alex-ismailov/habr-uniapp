@@ -1,6 +1,6 @@
 const path = require('path');// рекомендуется всегда подключать вручную
 const fs = require('fs');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const json = require('./file.json');
@@ -17,7 +17,8 @@ const PAGES = fs.readdirSync(PAGES_DIR).filter((fileName) => fileName.endsWith('
 module.exports = {
   // Необходимо для того чтобы получить доступ к PATHS из других конфигов
   externals: {
-    paths: PATHS, // Ярлык для PATHS
+    // Ярлык для PATHS
+    paths: PATHS,
   },
   entry: {
     app: `${PATHS.src}/client.js`,
@@ -53,13 +54,13 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: { sourceMap: true},
+            options: { sourceMap: true },
           }, {
             loader: 'postcss-loader',
-            options: { sourceMap: true, config: {path: `./postcss.config.js`}},
+            options: { sourceMap: true, config: { path: './postcss.config.js' } },
           }, {
             loader: 'sass-loader',
-            options: { sourceMap: true},
+            options: { sourceMap: true },
           },
         ],
       }, {
@@ -87,17 +88,17 @@ module.exports = {
     },
   },
   plugins: [
-    ...PAGES.map(page => new htmlWebpackPlugin({
+    ...PAGES.map((page) => new HtmlWebpackPlugin({
       template: `${PAGES_DIR}/${page}`,
       filename: `./${page}`,
     })),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[contenthash].css`,
     }),
-    new CopyWebpackPlugin([ //каждый новый путь это новый объект
-      { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
-      { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
-      { from: `${PATHS.src}/static`, to: ''},
+    new CopyWebpackPlugin([ // каждый новый путь это новый объект
+      { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
+      { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts` },
+      { from: `${PATHS.src}/static`, to: '' },
     ]),
   ],
 };
